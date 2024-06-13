@@ -1,1 +1,33 @@
-****/Debug/
+Open In Editor
+Edit
+Copy code
+# Archivos y carpetas de Visual Studio
+.vs/
+*.csproj.user
+*.suo
+*.vssscc
+
+# Archivos de compilación y depuración
+bin/
+obj/
+Debug/
+Release/
+*.pdb
+*.exe
+*.dll
+
+# Archivos de logs y temporales
+*.log
+*.tmp
+*.temp
+
+# Archivos de configuración y estado
+app.config
+web.config
+*.settings
+
+# Otros archivos y carpetas
+packages/
+*.nuget
+*.resharper
+*.vspscc
