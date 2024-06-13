@@ -56,10 +56,10 @@ namespace ClassLibrary
             }
             else
             {
+                InsertObjectInMatrizNotAdyacent(matriz, "#", crystalQty);
                 InsertObjectInMatriz(matriz, "&", players);
                 InsertObjectInMatriz(matriz, "O", portals);
                 InsertObjectInMatriz(matriz, "¥", trollsQty);
-                InsertObjectInMatrizNotAdyacent(matriz, "#", crystalQty);
             }
             HandleMovement(matriz, avatar);
         }
@@ -204,6 +204,8 @@ namespace ClassLibrary
             {
                 for (int dy = -1; dy <= 1; dy++)
                 {
+                    if (Math.Abs(dx) + Math.Abs(dy) != 1) continue; // saltar diagonales
+
                     int nx = x + dx;
                     int ny = y + dy;
                     if ((nx >= 0 && nx < rows) && (ny >= 0 && ny < cols))

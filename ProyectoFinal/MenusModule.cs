@@ -80,7 +80,7 @@ namespace ProyectoFinal
             Clear();
             WriteLine("Información sobre CRYSTAL COLLECTOR");
             WriteLine("-------------------------------------------------------------");
-            WriteLine("Juego desarrollado por Mariano Galvez Inc, version de .NET v8.0");
+            WriteLine("Juego desarrollado por Jonatan Palacios, version de .NET v8.0");
             WriteLine("-------------------------------------------------------------");
             WriteLine("Presiona cualquier tecla para regresar al menu");
             ReadKey(true);

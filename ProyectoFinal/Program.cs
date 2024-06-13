@@ -32,6 +32,10 @@ namespace ProyectoFinal
                     case 4:
                         WriteLine("¡Hasta luego!");
                         return;
+                    default:
+                        WriteLine("Elije una opcion correcta");
+                        ReadKey();
+                        break;
                 }
             }
         }
