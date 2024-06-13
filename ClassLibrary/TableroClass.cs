@@ -78,14 +78,33 @@ namespace ClassLibrary
         {
             try
             {
-                ConsoleKeyInfo cki;
+                ConsoleKeyInfo dataKey;
                 bool gameCompleted = false;
                 do
                 {
                     MenuHeader(avatar);
                     PrintMatriz(matriz);
-                    cki = ReadKey();
-                } while (!gameCompleted && cki.KeyChar.ToString().ToUpper() != "I");
+                    dataKey = ReadKey();
+                    if ("ASDWI".Contains(dataKey.KeyChar.ToString().ToUpper()))
+                    {
+                        switch (dataKey.KeyChar.ToString().ToUpper())
+                        {
+                            case "A":
+                                break;
+                            case "S":
+                                break;
+                            case "D":
+                                break;
+                            case "W":
+                                break;
+                            case "I":
+                                return;
+                        }
+                    } else
+                    {
+                        WriteLine("Tecla no válida, por favor use A, S, D, W o I.");
+                    }
+                } while (!gameCompleted);
             } catch (InvalidOperationException ex) { 
                 WriteLine(ex.Message);
             } catch (Exception e)
