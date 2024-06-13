@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Palacios\\Desktop\\A\\ProyectUmg\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{172837DE-86FA-4311-A20E-079AE04E51BA}|ClassLibrary\\ClassLibrary.csproj|c:\\users\\palacios\\desktop\\a\\proyectumg\\classlibrary\\tableroclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{172837DE-86FA-4311-A20E-079AE04E51BA}|ClassLibrary\\ClassLibrary.csproj|solutionrelative:classlibrary\\tableroclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{172837DE-86FA-4311-A20E-079AE04E51BA}|ClassLibrary\\ClassLibrary.csproj|c:\\users\\palacios\\desktop\\a\\proyectumg\\classlibrary\\avatarclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{172837DE-86FA-4311-A20E-079AE04E51BA}|ClassLibrary\\ClassLibrary.csproj|solutionrelative:classlibrary\\avatarclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7857744-DE74-4ED4-85EF-8EC3A9E24664}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\palacios\\desktop\\a\\proyectumg\\proyectofinal\\menusmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7857744-DE74-4ED4-85EF-8EC3A9E24664}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\menusmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7857744-DE74-4ED4-85EF-8EC3A9E24664}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\palacios\\desktop\\a\\proyectumg\\proyectofinal\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7857744-DE74-4ED4-85EF-8EC3A9E24664}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 149,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MenusModule.cs",
+              "DocumentMoniker": "C:\\Users\\Palacios\\Desktop\\A\\ProyectUmg\\ProyectoFinal\\MenusModule.cs",
+              "RelativeDocumentMoniker": "ProyectoFinal\\MenusModule.cs",
+              "ToolTip": "C:\\Users\\Palacios\\Desktop\\A\\ProyectUmg\\ProyectoFinal\\MenusModule.cs",
+              "RelativeToolTip": "ProyectoFinal\\MenusModule.cs",
+              "ViewState": "AQIAAGUAAAAAAAAAAAAIwKoAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T04:18:45.066Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Palacios\\Desktop\\A\\ProyectUmg\\ProyectoFinal\\Program.cs",
+              "RelativeDocumentMoniker": "ProyectoFinal\\Program.cs",
+              "ToolTip": "C:\\Users\\Palacios\\Desktop\\A\\ProyectUmg\\ProyectoFinal\\Program.cs",
+              "RelativeToolTip": "ProyectoFinal\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T05:10:19.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AvatarClass.cs",
+              "DocumentMoniker": "C:\\Users\\Palacios\\Desktop\\A\\ProyectUmg\\ClassLibrary\\AvatarClass.cs",
+              "RelativeDocumentMoniker": "ClassLibrary\\AvatarClass.cs",
+              "ToolTip": "C:\\Users\\Palacios\\Desktop\\A\\ProyectUmg\\ClassLibrary\\AvatarClass.cs",
+              "RelativeToolTip": "ClassLibrary\\AvatarClass.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAA5wBIAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T06:27:17.423Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 203,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TableroClass.cs",
+              "DocumentMoniker": "C:\\Users\\Palacios\\Desktop\\A\\ProyectUmg\\ClassLibrary\\TableroClass.cs",
+              "RelativeDocumentMoniker": "ClassLibrary\\TableroClass.cs",
+              "ToolTip": "C:\\Users\\Palacios\\Desktop\\A\\ProyectUmg\\ClassLibrary\\TableroClass.cs",
+              "RelativeToolTip": "ClassLibrary\\TableroClass.cs",
+              "ViewState": "AQIAALsAAAAAAAAAAAAYwMsAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-11T02:06:05.751Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

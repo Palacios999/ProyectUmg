@@ -1,0 +1,11 @@
+C:\Users\Palacios\Desktop\Laboratorios\ProyectoFinal_UMG\ClassLibrary\bin\Debug\net8.0\ClassLibrary.deps.json
+C:\Users\Palacios\Desktop\Laboratorios\ProyectoFinal_UMG\ClassLibrary\bin\Debug\net8.0\ClassLibrary.dll
+C:\Users\Palacios\Desktop\Laboratorios\ProyectoFinal_UMG\ClassLibrary\bin\Debug\net8.0\ClassLibrary.pdb
+C:\Users\Palacios\Desktop\Laboratorios\ProyectoFinal_UMG\ClassLibrary\obj\Debug\net8.0\ClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Palacios\Desktop\Laboratorios\ProyectoFinal_UMG\ClassLibrary\obj\Debug\net8.0\ClassLibrary.AssemblyInfoInputs.cache
+C:\Users\Palacios\Desktop\Laboratorios\ProyectoFinal_UMG\ClassLibrary\obj\Debug\net8.0\ClassLibrary.AssemblyInfo.cs
+C:\Users\Palacios\Desktop\Laboratorios\ProyectoFinal_UMG\ClassLibrary\obj\Debug\net8.0\ClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Palacios\Desktop\Laboratorios\ProyectoFinal_UMG\ClassLibrary\obj\Debug\net8.0\ClassLibrary.dll
+C:\Users\Palacios\Desktop\Laboratorios\ProyectoFinal_UMG\ClassLibrary\obj\Debug\net8.0\refint\ClassLibrary.dll
+C:\Users\Palacios\Desktop\Laboratorios\ProyectoFinal_UMG\ClassLibrary\obj\Debug\net8.0\ClassLibrary.pdb
+C:\Users\Palacios\Desktop\Laboratorios\ProyectoFinal_UMG\ClassLibrary\obj\Debug\net8.0\ref\ClassLibrary.dll
