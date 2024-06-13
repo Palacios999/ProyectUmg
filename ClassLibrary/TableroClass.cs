@@ -162,7 +162,14 @@ namespace ClassLibrary
                             collectionBox.TotalPoints += 15;
                             break;
                         case "¥":
-                            // TRIVIA, JOYAS DE VIDA, PUNTOS, CAMBIO DE NIVEL.
+                            var triviaResult = Trivia.ShowTrivia(avatar, collectionBox);
+                            if(triviaResult == true)
+                            {
+
+                            } else
+                            {
+
+                            }
                             break;
                         case "O":
                             // CAMBIO DE POSICIÓN Y CAMBIO DE NIVEL, PUNTOS
