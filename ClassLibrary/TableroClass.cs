@@ -79,15 +79,15 @@ namespace ClassLibrary
         {
             try
             {
-                List<(int, int)> crystalList = findInMatriz(matriz, "#");
-                List<(int, int)> trollsList = findInMatriz(matriz, "¥");
-                List<(int, int)> portalList = findInMatriz(matriz, "O");
-                List<(int, int)> avatarList = findInMatriz(matriz, "&");
-
                 ConsoleKeyInfo dataKey;
                 bool gameCompleted = false;
                 do
                 {
+                    var crystalList = findInMatriz(matriz, "#");
+                    var trollsList = findInMatriz(matriz, "¥");
+                    var portalList = findInMatriz(matriz, "O");
+                    var avatarList = findInMatriz(matriz, "&");
+
                     MenuHeader(avatar);
                     PrintMatriz(matriz);
                     dataKey = ReadKey();
@@ -100,9 +100,7 @@ namespace ClassLibrary
                                 {
                                     int x = point.Item1;
                                     int y = point.Item2;
-                                    x = x-1;
-                                    WriteLine(x + y);
-                                    WriteLine(point.Item1 + point.Item2);
+                                    y = y-1;
                                     matriz[point.Item1, point.Item2] = null;
                                     matriz[x, y] = null;
                                     matriz[x, y] = "&";
