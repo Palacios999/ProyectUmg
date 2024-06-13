@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
@@ -78,6 +79,11 @@ namespace ClassLibrary
         {
             try
             {
+                List<(int, int)> crystalList = findInMatriz(matriz, "#");
+                List<(int, int)> trollsList = findInMatriz(matriz, "¥");
+                List<(int, int)> portalList = findInMatriz(matriz, "O");
+                List<(int, int)> avatarList = findInMatriz(matriz, "&");
+
                 ConsoleKeyInfo dataKey;
                 bool gameCompleted = false;
                 do
@@ -90,6 +96,17 @@ namespace ClassLibrary
                         switch (dataKey.KeyChar.ToString().ToUpper())
                         {
                             case "A":
+                                foreach (var point in avatarList)
+                                {
+                                    int x = point.Item1;
+                                    int y = point.Item2;
+                                    x = x-1;
+                                    WriteLine(x + y);
+                                    WriteLine(point.Item1 + point.Item2);
+                                    matriz[point.Item1, point.Item2] = null;
+                                    matriz[x, y] = null;
+                                    matriz[x, y] = "&";
+                                }
                                 break;
                             case "S":
                                 break;
@@ -99,10 +116,11 @@ namespace ClassLibrary
                                 break;
                             case "I":
                                 WriteLine("");
-                                WriteLine("Precione cualquier tecla para salir del ciclo");
+                                WriteLine("Presione cualquier tecla para salir del ciclo");
                                 return;
                         }
-                    } else
+                    } 
+                    else
                     {
                         WriteLine("Tecla no válida, por favor use A, S, D, W o I.");
                     }
