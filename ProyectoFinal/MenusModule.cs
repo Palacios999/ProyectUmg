@@ -117,13 +117,16 @@ namespace ProyectoFinal
                 }
 
                 Avatar avatarPrincipal = null;
+                CollectionBox collectionBox = null;
                 switch(gender)
                 {
                     case 1:
                         avatarPrincipal = new Avatar(string.IsNullOrWhiteSpace(nameAvatar) ? "Juan" : nameAvatar, "Masculino");
+                        collectionBox = new CollectionBox(0, 0, 3);
                         break;
                     case 2:
                         avatarPrincipal = new Avatar(string.IsNullOrWhiteSpace(nameAvatar) ? "Maria" : nameAvatar, "Femenino");
+                        collectionBox = new CollectionBox(0, 0, 3);
                         break;
                 }
                 WriteLine("-------------------------------------------------------------");
@@ -131,7 +134,7 @@ namespace ProyectoFinal
                 WriteLine("Presiona cualquier tecla para continuar");
                 WriteLine("-------------------------------------------------------------");
                 ReadKey(true);
-                subMenuInit(avatarPrincipal);
+                subMenuInit(avatarPrincipal, collectionBox);
             } catch (ArgumentNullException ex) {
                 WriteLine(ex.Message);
             } catch (Exception ex) { 
@@ -139,7 +142,7 @@ namespace ProyectoFinal
             }
         }
 
-        public static void subMenuInit(Avatar avatarPrincipal)
+        public static void subMenuInit(Avatar avatarPrincipal, CollectionBox collectionBox)
         {
             while (true)
             {
@@ -168,11 +171,11 @@ namespace ProyectoFinal
                             Commands();
                             break;
                         case 2:
-                            Tablero.InitGameOne(avatarPrincipal);
+                            Tablero.InitGameOne(avatarPrincipal, collectionBox);
                             ReadKey(true);
                             break;
                         case 3:
-                            StateAvatar(avatarPrincipal);
+                            StateAvatar(avatarPrincipal, collectionBox);
                             break;
                         case 4:
                             return;
@@ -210,7 +213,7 @@ namespace ProyectoFinal
             ReadKey(true);
         }
 
-        public static void StateAvatar(Avatar avatarPrincipal)
+        public static void StateAvatar(Avatar avatarPrincipal, CollectionBox collectionBox)
         {
             Clear();
             if (avatarPrincipal != null)
@@ -218,9 +221,9 @@ namespace ProyectoFinal
                 WriteLine("-------------------------------------------------------------");
                 WriteLine($"Nombre del avatar: {avatarPrincipal.Name}");
                 WriteLine($"Genero del avatar: {avatarPrincipal.Gender}");
-                WriteLine($"Joyas de vida: {avatarPrincipal.GetTotalLifeJewelry()}");
-                WriteLine($"Cristales recolectados: {avatarPrincipal.GetTotalCrystals()}");
-                WriteLine($"Puntos: {avatarPrincipal.GetTotalPoints()}");
+                WriteLine($"Joyas de vida: {collectionBox.GetTotalLifeJewelry()}");
+                WriteLine($"Cristales recolectados: {collectionBox.GetTotalCrystals()}");
+                WriteLine($"Puntos: {collectionBox.GetTotalPoints()}");
                 WriteLine($"Ubicación Actual: {avatarPrincipal.GetCurrentCoordinates()}");
                 WriteLine("-------------------------------------------------------------");
                 WriteLine("Presiona cualquier tecla para continuar");
