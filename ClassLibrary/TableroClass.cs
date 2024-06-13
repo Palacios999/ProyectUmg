@@ -81,7 +81,7 @@ namespace ClassLibrary
             WriteLine("-------------------------------------------------------------");
         }
 
-        public static void HandleMovement(string[,] matriz, Avatar avatar, CollectionBox collection)
+        public static void HandleMovement(string[,] matriz, Avatar avatar, CollectionBox collectionBox)
         {
             try
             {
@@ -89,12 +89,9 @@ namespace ClassLibrary
                 bool gameCompleted = false;
                 do
                 {
-                    var crystalList = findInMatriz(matriz, "#");
-                    var trollsList = findInMatriz(matriz, "¥");
-                    var portalList = findInMatriz(matriz, "O");
                     var avatarList = findInMatriz(matriz, "&");
                     Clear();
-                    MenuHeader(avatar, collection);
+                    MenuHeader(avatar, collectionBox);
                     PrintMatriz(matriz);
                     dataKey = ReadKey();
                     if ("ASDWI".Contains(dataKey.KeyChar.ToString().ToUpper()))
@@ -102,66 +99,16 @@ namespace ClassLibrary
                         switch (dataKey.KeyChar.ToString().ToUpper())
                         {
                             case "A":
-                                foreach (var point in avatarList)
-                                {
-                                    int fila = point.Item1;
-                                    int columna = point.Item2;
-                                    columna = columna - 1;
-                                    matriz[point.Item1, point.Item2] = null;
-                                    if(matriz[fila, columna] != null)
-                                    {
-                                        string checkPosition = matriz[fila, columna];
-                                        switch (checkPosition)
-                                        {
-                                            case "#":
-                                                collection.TotalCrystals += 1;
-                                                collection.TotalPoints += 15;
-                                                break;
-                                            case "¥":
-                                                break;
-                                            case "O":
-                                                break;
-                                        }
-                                    }
-                                    matriz[fila, columna] = "&";
-                                    avatar.UpdateCoordinate(fila, columna);
-                                }
+                                DetectMove("A", matriz, avatarList, avatar, collectionBox);
                                 break;
                             case "S":
-                                foreach (var point in avatarList)
-                                {
-                                    int fila = point.Item1;
-                                    int columna = point.Item2;
-                                    fila = fila + 1;
-                                    matriz[point.Item1, point.Item2] = null;
-                                    matriz[fila, columna] = null;
-                                    matriz[fila, columna] = "&";
-                                    avatar.UpdateCoordinate(fila, columna);
-                                }
+                                DetectMove("S", matriz, avatarList, avatar, collectionBox);
                                 break;
                             case "D":
-                                foreach (var point in avatarList)
-                                {
-                                    int fila = point.Item1;
-                                    int columna = point.Item2;
-                                    columna = columna + 1;
-                                    matriz[point.Item1, point.Item2] = null;
-                                    matriz[fila, columna] = null;
-                                    matriz[fila, columna] = "&";
-                                    avatar.UpdateCoordinate(fila, columna);
-                                }
+                                DetectMove("D", matriz, avatarList, avatar, collectionBox);
                                 break;
                             case "W":
-                                foreach (var point in avatarList)
-                                {
-                                    int fila = point.Item1;
-                                    int columna = point.Item2;
-                                    fila = fila - 1;
-                                    matriz[point.Item1, point.Item2] = null;
-                                    matriz[fila, columna] = null;
-                                    matriz[fila, columna] = "&";
-                                    avatar.UpdateCoordinate(fila, columna);
-                                }
+                                DetectMove("W", matriz, avatarList, avatar, collectionBox);
                                 break;
                             case "I":
                                 WriteLine("");
@@ -179,6 +126,49 @@ namespace ClassLibrary
             } catch (Exception e)
             {
                 WriteLine(e.Message);
+            }
+        }
+
+        public static void DetectMove(string keySelect, string[,] matriz, List<(int, int)> avatarPoints, Avatar avatar, CollectionBox collectionBox)
+        {
+            foreach (var point in avatarPoints)
+            {
+                int fila = point.Item1;
+                int columna = point.Item2;
+                switch (keySelect)
+                {
+                    case "A":
+                        columna = columna - 1;
+                        break;
+                    case "D":
+                        columna = columna + 1;
+                        break;
+                    case "W":
+                        fila = fila - 1;
+                        break;
+                    case "S":
+                        fila = fila + 1;
+                        break;
+                }
+                
+                matriz[point.Item1, point.Item2] = null;
+                if (matriz[fila, columna] != null)
+                {
+                    string checkPosition = matriz[fila, columna];
+                    switch (checkPosition)
+                    {
+                        case "#":
+                            collectionBox.TotalCrystals += 1;
+                            collectionBox.TotalPoints += 15;
+                            break;
+                        case "¥":
+                            break;
+                        case "O":
+                            break;
+                    }
+                }
+                matriz[fila, columna] = "&";
+                avatar.UpdateCoordinate(fila, columna);
             }
         }
 
