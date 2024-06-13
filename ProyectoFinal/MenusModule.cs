@@ -178,7 +178,8 @@ namespace ProyectoFinal
                             StateAvatar(avatarPrincipal, collectionBox);
                             break;
                         case 4:
-                            return;
+                            Environment.Exit(0);
+                            break;
                     }
                 } catch (ArgumentNullException ex)
                 {

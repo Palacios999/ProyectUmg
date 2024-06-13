@@ -81,19 +81,20 @@ namespace ClassLibrary
             WriteLine("-------------------------------------------------------------");
         }
 
+        public static bool gameCompleted = false;
         public static void HandleMovement(string[,] matriz, Avatar avatar, CollectionBox collectionBox)
         {
             try
             {
                 ConsoleKeyInfo dataKey;
-                bool gameCompleted = false;
+                int level = avatar.Level;
                 do
                 {
                     var avatarList = findInMatriz(matriz, "&");
                     Clear();
                     MenuHeader(avatar, collectionBox);
                     PrintMatriz(matriz);
-                    dataKey = ReadKey();
+                    dataKey = ReadKey(true);
                     if ("ASDWI".Contains(dataKey.KeyChar.ToString().ToUpper()))
                     {
                         switch (dataKey.KeyChar.ToString().ToUpper())
@@ -120,7 +121,7 @@ namespace ClassLibrary
                     {
                         WriteLine("Tecla no válida, por favor use A, S, D, W o I.");
                     }
-                } while (!gameCompleted);
+                } while (!gameCompleted && level == avatar.Level);
             } catch (InvalidOperationException ex) { 
                 WriteLine(ex.Message);
             } catch (Exception e)
@@ -150,34 +151,86 @@ namespace ClassLibrary
                         fila = fila + 1;
                         break;
                 }
-                
-                matriz[point.Item1, point.Item2] = null;
-                if (matriz[fila, columna] != null)
+                try
                 {
-                    string checkPosition = matriz[fila, columna];
-                    switch (checkPosition)
+                    matriz[point.Item1, point.Item2] = null;
+                    if (matriz[fila, columna] != null)
                     {
-                        case "#":
-                            collectionBox.TotalCrystals += 1;
-                            collectionBox.TotalPoints += 15;
-                            break;
-                        case "¥":
-                            var triviaResult = Trivia.ShowTrivia(avatar, collectionBox);
-                            if(triviaResult == true)
-                            {
+                        string checkPosition = matriz[fila, columna];
+                        switch (checkPosition)
+                        {
+                            case "#":
+                                collectionBox.TotalCrystals += 1;
+                                collectionBox.TotalPoints += 15;
+                                updateAvatarCoordinate(avatar, matriz, fila, columna);
+                                break;
+                            case "¥":
+                              var triviaResult = Trivia.ShowTrivia(avatar, collectionBox);
+                              if(triviaResult == true)
+                              {
 
-                            } else
-                            {
+                              } else
+                              {
 
-                            }
-                            break;
-                        case "O":
-                            // CAMBIO DE POSICIÓN Y CAMBIO DE NIVEL, PUNTOS
-                            break;
+                              }
+                              break;
+                            case "O":
+                                var remainingCrystals = findInMatriz(matriz, "#");
+                                if (remainingCrystals.Count == 0)
+                                {
+                                    if(avatar.Level == 5)
+                                    {
+                                        WriteLine("Felicitaciones, has logrado completar el juego");
+                                        WriteLine("Si quieres jugar de nuevo ingresa 1 si no presiona cualquier tecla");
+                                        string salir = ReadLine();
+                                        if (salir.Equals("1"))
+                                        {
+                                            avatar.Level = 1;
+                                            InitGameOne(avatar, collectionBox);
+                                        }
+                                        else
+                                        {
+                                            Environment.Exit(0);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        avatar.Level += 1;
+                                        InitGameOne(avatar, collectionBox);
+                                    }
+                                }
+                                else
+                                {
+                                    var portalPosition = findInMatriz(matriz, "O");
+                                    foreach (var portal in portalPosition)
+                                    {
+                                        matriz[portal.Item1, portal.Item2] = null;
+                                    }
+                                    updateAvatarCoordinate(avatar, matriz, fila, columna);
+                                    InsertObjectInMatriz(matriz, "O", 1);
+                                }
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        updateAvatarCoordinate(avatar, matriz, fila, columna);
                     }
                 }
-                matriz[fila, columna] = "&";
-                avatar.UpdateCoordinate(fila, columna);
+                catch
+                {
+                    WriteLine("Te caiste del mapa, regresas un nivel, ten cuidado");
+                    ReadKey(true);
+                    if (avatar.Level == 1)
+                    {
+                        InitGameOne(avatar, collectionBox);
+                    }
+                    else
+                    {
+                        avatar.Level -= 1;
+                        InitGameOne(avatar, collectionBox);
+                    }
+                }
             }
         }
 
@@ -310,6 +363,12 @@ namespace ClassLibrary
                     avatar.UpdateCoordinate(oneX, oneY);
                 }
             }
+        }
+
+        public static void updateAvatarCoordinate(Avatar avatar, string[,] matriz, int fila, int columna)
+        {
+            matriz[fila, columna] = "&";
+            avatar.UpdateCoordinate(fila, columna);
         }
     }
 }
