@@ -165,9 +165,15 @@ namespace ClassLibrary
                                 updateAvatarCoordinate(avatar, matriz, fila, columna);
                                 break;
                             case "¥":
-                                // TRIVIA, JOYAS DE VIDA, PUNTOS, CAMBIO DE NIVEL.
-                                updateAvatarCoordinate(avatar, matriz, fila, columna);
-                                break;
+                              var triviaResult = Trivia.ShowTrivia(avatar, collectionBox);
+                              if(triviaResult == true)
+                              {
+
+                              } else
+                              {
+
+                              }
+                              break;
                             case "O":
                                 var remainingCrystals = findInMatriz(matriz, "#");
                                 if (remainingCrystals.Count == 0)
