@@ -98,6 +98,8 @@ namespace ClassLibrary
                             case "W":
                                 break;
                             case "I":
+                                WriteLine("");
+                                WriteLine("Precione cualquier tecla para salir del ciclo");
                                 return;
                         }
                     } else
