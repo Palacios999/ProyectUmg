@@ -98,12 +98,12 @@ namespace ClassLibrary
                             case "A":
                                 foreach (var point in avatarList)
                                 {
-                                    int x = point.Item1;
-                                    int y = point.Item2;
-                                    y = y-1;
+                                    int fila = point.Item1;
+                                    int columna = point.Item2;
+                                    columna = columna - 1;
                                     matriz[point.Item1, point.Item2] = null;
-                                    matriz[x, y] = null;
-                                    matriz[x, y] = "&";
+                                    matriz[fila, columna] = null;
+                                    matriz[fila, columna] = "&";
                                 }
                                 break;
                             case "S":
