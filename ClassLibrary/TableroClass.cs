@@ -108,16 +108,60 @@ namespace ClassLibrary
                                     int columna = point.Item2;
                                     columna = columna - 1;
                                     matriz[point.Item1, point.Item2] = null;
-                                    matriz[fila, columna] = null;
+                                    if(matriz[fila, columna] != null)
+                                    {
+                                        string checkPosition = matriz[fila, columna];
+                                        switch (checkPosition)
+                                        {
+                                            case "#":
+                                                collection.TotalCrystals += 1;
+                                                collection.TotalPoints += 15;
+                                                break;
+                                            case "¥":
+                                                break;
+                                            case "O":
+                                                break;
+                                        }
+                                    }
                                     matriz[fila, columna] = "&";
                                     avatar.UpdateCoordinate(fila, columna);
                                 }
                                 break;
                             case "S":
+                                foreach (var point in avatarList)
+                                {
+                                    int fila = point.Item1;
+                                    int columna = point.Item2;
+                                    fila = fila + 1;
+                                    matriz[point.Item1, point.Item2] = null;
+                                    matriz[fila, columna] = null;
+                                    matriz[fila, columna] = "&";
+                                    avatar.UpdateCoordinate(fila, columna);
+                                }
                                 break;
                             case "D":
+                                foreach (var point in avatarList)
+                                {
+                                    int fila = point.Item1;
+                                    int columna = point.Item2;
+                                    columna = columna + 1;
+                                    matriz[point.Item1, point.Item2] = null;
+                                    matriz[fila, columna] = null;
+                                    matriz[fila, columna] = "&";
+                                    avatar.UpdateCoordinate(fila, columna);
+                                }
                                 break;
                             case "W":
+                                foreach (var point in avatarList)
+                                {
+                                    int fila = point.Item1;
+                                    int columna = point.Item2;
+                                    fila = fila - 1;
+                                    matriz[point.Item1, point.Item2] = null;
+                                    matriz[fila, columna] = null;
+                                    matriz[fila, columna] = "&";
+                                    avatar.UpdateCoordinate(fila, columna);
+                                }
                                 break;
                             case "I":
                                 WriteLine("");
