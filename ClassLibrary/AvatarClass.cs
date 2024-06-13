@@ -13,7 +13,7 @@ namespace ClassLibrary
         public Avatar(string name, string gender) {
             Name = name;
             Gender = gender;
-            Level = 3;
+            Level = 5;
             CurrentCoordinateX = 0;
             CurrentCoordinateY = 0;
         }

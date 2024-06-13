@@ -81,12 +81,12 @@ namespace ClassLibrary
             WriteLine("-------------------------------------------------------------");
         }
 
+        public static bool gameCompleted = false;
         public static void HandleMovement(string[,] matriz, Avatar avatar, CollectionBox collectionBox)
         {
             try
             {
                 ConsoleKeyInfo dataKey;
-                bool gameCompleted = false;
                 int level = avatar.Level;
                 do
                 {
@@ -172,8 +172,26 @@ namespace ClassLibrary
                                 var remainingCrystals = findInMatriz(matriz, "#");
                                 if (remainingCrystals.Count == 0)
                                 {
-                                    avatar.Level += 1;
-                                    InitGameOne(avatar, collectionBox);
+                                    if(avatar.Level == 5)
+                                    {
+                                        WriteLine("Felicitaciones, has logrado completar el juego");
+                                        WriteLine("Si quieres jugar de nuevo ingresa 1 si no presiona cualquier tecla");
+                                        string salir = ReadLine();
+                                        if (salir.Equals("1"))
+                                        {
+                                            avatar.Level = 1;
+                                            InitGameOne(avatar, collectionBox);
+                                        }
+                                        else
+                                        {
+                                            Environment.Exit(0);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        avatar.Level += 1;
+                                        InitGameOne(avatar, collectionBox);
+                                    }
                                 }
                                 else
                                 {
@@ -196,9 +214,16 @@ namespace ClassLibrary
                 catch
                 {
                     WriteLine("Te caiste del mapa, regresas un nivel, ten cuidado");
-                    ReadKey(false);
-                    avatar.Level -= 1;
-                    InitGameOne(avatar, collectionBox);
+                    ReadKey(true);
+                    if (avatar.Level == 1)
+                    {
+                        InitGameOne(avatar, collectionBox);
+                    }
+                    else
+                    {
+                        avatar.Level -= 1;
+                        InitGameOne(avatar, collectionBox);
+                    }
                 }
             }
         }
