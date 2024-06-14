@@ -28,5 +28,12 @@ namespace ClassLibrary
             this.CurrentCoordinateX = coordinateX;
             this.CurrentCoordinateY = coordinateY;
         }
+
+        public void ResetDataAvatar()
+        {
+            this.Level = 1;
+            this.CurrentCoordinateX = 0;
+            this.CurrentCoordinateY= 0;
+        }
     }
 }

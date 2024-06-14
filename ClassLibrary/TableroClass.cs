@@ -161,15 +161,16 @@ namespace ClassLibrary
                             case "#":
                                 collectionBox.TotalCrystals += 1;
                                 collectionBox.TotalPoints += 15;
+                                updateAvatarCoordinate(avatar, matriz, fila, columna);
                                 var validateCrystals = findInMatriz(matriz, "#");
-                                if (validateCrystals.Count == 1)
+                                if (validateCrystals.Count == 0)
                                 {
+                                    WriteLine("");
                                     WriteLine("-------------------------------------------------------------");
                                     WriteLine("Ya puedes avanzar al siguiente nivel, busca el portal");
                                     WriteLine("-------------------------------------------------------------");
-                                    ReadKey();
+                                    Task.Delay(1000).Wait();
                                 }
-                                updateAvatarCoordinate(avatar, matriz, fila, columna);
                                 break;
                             case " ":
                                 var triviaResult = Trivia.ShowTrivia(avatar, collectionBox);
@@ -188,8 +189,7 @@ namespace ClassLibrary
                                     if (collectionBox.TotalLifeJewelry == 0)
                                     {
                                         Clear();
-                                        WriteLine("------------------------- Pilas Inge o le pega la mujer ---------------------------");
-                                        WriteLine("░░░░░░▄█▀█▄░░░░░░░░░░░░░░░\r\n░▄█▀▀▀▀░░░░▀█▄▄▄▄▄▄▄░░░░░░\r\n█▀░░░░░░░░░░░░░░░░░▀█░░░░░\r\n▀▄░▄░░░░░░░░░░░░░░░▄█░░░░░\r\n░█████▄▄▄▄▄██▄▄▄█▀▀█░░░░░░\r\n░█▀█░░░░▀░░░░░▀░░░░█▀▀▀▀▀█\r\n░█░███▄▄▄▄░░░▄▄▄▄▄██▀▀██░█\r\n░█░███░████▀████░███░░█░░█\r\n░█▄███░████░████░███░░█░█▀\r\n░░░███░████░████░███░░█░█░\r\n░░░███░████░████░███▄▄█░█░\r\n░░░███░████░████░███░░░▄█░\r\n░░░███░████░████░███▀▀▀▀░░\r\n░░▄███▄████░████▄███▄░░░░░\r\n░░███▀███████████▀███░░░░░\r\n░░░░▀▀▀██▄▄▄▄▄██▀▀▀░░░░░░░");
+                                        WriteLine("-------------------------------------------------------------");
                                         WriteLine("-------------------------GAME OVER---------------------------");
                                         WriteLine("-------------------------------------------------------------");
                                         WriteLine($"Nombre del avatar: {avatar.Name}");
@@ -199,6 +199,8 @@ namespace ClassLibrary
                                         WriteLine($"Puntos: {collectionBox.GetTotalPoints()}");
                                         WriteLine($"Ubicación Actual: {avatar.GetCurrentCoordinates()}");
                                         WriteLine("-------------------------------------------------------------");
+                                        avatar.ResetDataAvatar();
+                                        collectionBox.ResetCollectionBox();
                                         WriteLine("Presiona cualquier tecla para continuar");
                                         gameCompleted = true;
                                     }

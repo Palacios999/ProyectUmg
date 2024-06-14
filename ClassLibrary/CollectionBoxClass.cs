@@ -48,5 +48,12 @@ namespace ClassLibrary
             this.TotalPoints += points;
         }
 
+        public void ResetCollectionBox()
+        {
+            this.TotalPoints = 0;
+            this.TotalCrystals = 0;
+            this.TotalLifeJewelry = 0;
+        }
+
     }
 }
