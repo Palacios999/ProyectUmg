@@ -174,7 +174,6 @@ namespace ClassLibrary
                                     updateAvatarCoordinate(avatar, matriz, fila, columna);
                                     InsertObjectInMatriz(matriz, " ", 1);
 
-<<<<<<< totalPointTrivia
                                 } else
                                 {
                                     collectionBox.TotalLifeJewelry += -1;
@@ -182,12 +181,6 @@ namespace ClassLibrary
                                     avatar.Level += -1;
                                     InitGameOne(avatar, collectionBox);
                                 }
-=======
-                              } else
-                              {
-
-                              }
->>>>>>> main
                               break;
                             case "O":
                                 if (avatar.Level == 1)
