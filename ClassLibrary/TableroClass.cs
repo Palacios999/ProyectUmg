@@ -77,7 +77,7 @@ namespace ClassLibrary
             WriteLine("1. Comandos");
             WriteLine("2. Terminar partida");
             WriteLine("-------------------------------------------------------------");
-            WriteLine($"Name: {avatar.Name} | Level: {avatar.Level} | LifeJewel: {collectionBox.GetTotalLifeJewelry()} | Position: ({coordinateX},{coordinateY}) |");
+            WriteLine($"Name: {avatar.Name} | Level: {avatar.Level} | LifeJewel: {collectionBox.GetTotalLifeJewelry()} | TotalPoints: {collectionBox.GetTotalPoints()} | Position: ({coordinateX},{coordinateY}) |");
             WriteLine("-------------------------------------------------------------");
         }
 
@@ -169,14 +169,25 @@ namespace ClassLibrary
                                 if(triviaResult == true)
                                 {
                                     collectionBox.TotalLifeJewelry += 1;
+                                    collectionBox.TotalPoints += 10;
                                     matriz[fila, columna] = null;
                                     updateAvatarCoordinate(avatar, matriz, fila, columna);
                                     InsertObjectInMatriz(matriz, " ", 1);
 
+<<<<<<< totalPointTrivia
+                                } else
+                                {
+                                    collectionBox.TotalLifeJewelry += -1;
+                                    collectionBox.TotalPoints += -10;
+                                    avatar.Level += -1;
+                                    InitGameOne(avatar, collectionBox);
+                                }
+=======
                               } else
                               {
 
                               }
+>>>>>>> main
                               break;
                             case "O":
                                 if (avatar.Level == 1)
