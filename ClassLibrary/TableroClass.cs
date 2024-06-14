@@ -174,6 +174,7 @@ namespace ClassLibrary
                                     updateAvatarCoordinate(avatar, matriz, fila, columna);
                                     InsertObjectInMatriz(matriz, " ", 1);
 
+<<<<<<< totalPointTrivia
                                 } else
                                 {
                                     collectionBox.TotalLifeJewelry += -1;
@@ -181,26 +182,37 @@ namespace ClassLibrary
                                     avatar.Level += -1;
                                     InitGameOne(avatar, collectionBox);
                                 }
+=======
+                              } else
+                              {
+
+                              }
+>>>>>>> main
                               break;
                             case "O":
-                                if (avatar.Level == 1) {
+                                if (avatar.Level == 1)
+                                {
                                     var remainingCrystals = findInMatriz(matriz, "#");
                                     if (remainingCrystals.Count == 0)
                                     {
                                         avatar.Level += 1;
                                         InitGameOne(avatar, collectionBox);
-                                    } else
+                                    }
+                                    else
                                     {
                                         WriteLine("Recolecta todos los cristales para poder ingresar al portal");
                                         updateAvatarCoordinate(avatar, matriz, point.Item1, point.Item2);
                                         ReadKey(true);
                                     }
-                                } else {
+                                }
+                                else
+                                {
                                     var remainingCrystals = findInMatriz(matriz, "#");
                                     if (remainingCrystals.Count == 0)
                                     {
                                         if (avatar.Level == 5)
                                         {
+                                            collectionBox.TotalPoints += 1000;
                                             WriteLine("Felicitaciones, has logrado completar el juego");
                                             WriteLine("Si quieres jugar de nuevo ingresa 1 si no presiona cualquier tecla");
                                             string salir = ReadLine();
@@ -217,6 +229,7 @@ namespace ClassLibrary
                                         else
                                         {
                                             avatar.Level += 1;
+                                            collectionBox.TotalPoints += 50;
                                             InitGameOne(avatar, collectionBox);
                                         }
                                     }
@@ -227,11 +240,11 @@ namespace ClassLibrary
                                         {
                                             matriz[portal.Item1, portal.Item2] = null;
                                         }
+                                        collectionBox.TotalPoints -= 5;
                                         updateAvatarCoordinate(avatar, matriz, fila, columna);
                                         InsertObjectInMatriz(matriz, "O", 1);
                                     }
                                 }
-                                
                                 break;
                         }
                     }
