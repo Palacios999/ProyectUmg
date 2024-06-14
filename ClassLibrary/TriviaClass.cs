@@ -22,7 +22,6 @@ namespace ClassLibrary
             Random random = new Random();
             var numRandom = random.Next(1, 7);
             var resultTrivia = ShowTriviaNumber(numRandom);
-            ReadLine();
             return resultTrivia;
         }
 

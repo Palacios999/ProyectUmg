@@ -61,7 +61,7 @@ namespace ClassLibrary
                 InsertObjectInMatrizNotAdyacent(matriz, "#", crystalQty);
                 InsertObjectInMatriz(matriz, "&", players);
                 InsertObjectInMatriz(matriz, "O", portals);
-                InsertObjectInMatriz(matriz, "¥", trollsQty);
+                InsertObjectInMatriz(matriz, " ", trollsQty);
                 updatePositionAvatarGenerate(matriz, avatar);
             }
             
@@ -164,24 +164,26 @@ namespace ClassLibrary
                                 collectionBox.TotalPoints += 15;
                                 updateAvatarCoordinate(avatar, matriz, fila, columna);
                                 break;
-                            case "¥":
+                            case " ":
                                 var triviaResult = Trivia.ShowTrivia(avatar, collectionBox);
                                 if(triviaResult == true)
                                 {
+                                    collectionBox.TotalLifeJewelry += 1;
+                                    matriz[fila, columna] = null;
+                                    updateAvatarCoordinate(avatar, matriz, fila, columna);
+                                    InsertObjectInMatriz(matriz, " ", 1);
 
-                                } else
-                                {
+                              } else
+                              {
 
-                                }
-                                updateAvatarCoordinate(avatar, matriz, fila, columna);
-                                break;
+                              }
+                              break;
                             case "O":
                                 var remainingCrystals = findInMatriz(matriz, "#");
                                 if (remainingCrystals.Count == 0)
                                 {
                                     if(avatar.Level == 5)
                                     {
-                                        collectionBox.TotalPoints += 1000;
                                         WriteLine("Felicitaciones, has logrado completar el juego");
                                         WriteLine("Si quieres jugar de nuevo ingresa 1 si no presiona cualquier tecla");
                                         string salir = ReadLine();
@@ -198,7 +200,6 @@ namespace ClassLibrary
                                     else
                                     {
                                         avatar.Level += 1;
-                                        collectionBox.TotalPoints += 50;
                                         InitGameOne(avatar, collectionBox);
                                     }
                                 }
@@ -209,7 +210,6 @@ namespace ClassLibrary
                                     {
                                         matriz[portal.Item1, portal.Item2] = null;
                                     }
-                                    collectionBox.TotalPoints -= 5;
                                     updateAvatarCoordinate(avatar, matriz, fila, columna);
                                     InsertObjectInMatriz(matriz, "O", 1);
                                 }
