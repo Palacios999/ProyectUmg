@@ -74,8 +74,7 @@ namespace ClassLibrary
             var coordinateX = coordinate.Item1;
             var coordinateY = coordinate.Item2;
             WriteLine("-------------------------------------------------------------");
-            WriteLine("1. Comandos");
-            WriteLine("2. Terminar partida");
+            WriteLine("1. Regresar al menu");
             WriteLine("-------------------------------------------------------------");
             WriteLine($"Name: {avatar.Name} | Level: {avatar.Level} | LifeJewel: {collectionBox.GetTotalLifeJewelry()} | TotalPoints: {collectionBox.GetTotalPoints()} | Position: ({coordinateX},{coordinateY}) |");
             WriteLine("-------------------------------------------------------------");
@@ -95,7 +94,7 @@ namespace ClassLibrary
                     MenuHeader(avatar, collectionBox);
                     PrintMatriz(matriz);
                     dataKey = ReadKey(true);
-                    if ("ASDWI".Contains(dataKey.KeyChar.ToString().ToUpper()))
+                    if ("ASDW1".Contains(dataKey.KeyChar.ToString().ToUpper()))
                     {
                         switch (dataKey.KeyChar.ToString().ToUpper())
                         {
@@ -111,15 +110,15 @@ namespace ClassLibrary
                             case "W":
                                 DetectMove("W", matriz, avatarList, avatar, collectionBox);
                                 break;
-                            case "I":
+                            case "1":
                                 WriteLine("");
-                                WriteLine("Presione cualquier tecla para salir del ciclo");
+                                WriteLine("Presione cualquier tecla para regresar al menu");
                                 return;
                         }
                     } 
                     else
                     {
-                        WriteLine("Tecla no válida, por favor use A, S, D, W o I.");
+                        WriteLine("Tecla no válida, por favor use A, S, D, W o 1.");
                     }
                 } while (!gameCompleted && level == avatar.Level);
             } catch (InvalidOperationException ex) { 
@@ -162,6 +161,14 @@ namespace ClassLibrary
                             case "#":
                                 collectionBox.TotalCrystals += 1;
                                 collectionBox.TotalPoints += 15;
+                                var validateCrystals = findInMatriz(matriz, "#");
+                                if (validateCrystals.Count == 1)
+                                {
+                                    WriteLine("-------------------------------------------------------------");
+                                    WriteLine("Ya puedes avanzar al siguiente nivel, busca el portal");
+                                    WriteLine("-------------------------------------------------------------");
+                                    ReadKey();
+                                }
                                 updateAvatarCoordinate(avatar, matriz, fila, columna);
                                 break;
                             case " ":
@@ -174,12 +181,32 @@ namespace ClassLibrary
                                     updateAvatarCoordinate(avatar, matriz, fila, columna);
                                     InsertObjectInMatriz(matriz, " ", 1);
 
-                                } else
+                                } 
+                                else
                                 {
                                     collectionBox.TotalLifeJewelry += -1;
-                                    collectionBox.TotalPoints += -10;
-                                    avatar.Level += -1;
-                                    InitGameOne(avatar, collectionBox);
+                                    if (collectionBox.TotalLifeJewelry == 0)
+                                    {
+                                        Clear();
+                                        WriteLine("-------------------------------------------------------------");
+                                        WriteLine("-------------------------GAME OVER---------------------------");
+                                        WriteLine("-------------------------------------------------------------");
+                                        WriteLine($"Nombre del avatar: {avatar.Name}");
+                                        WriteLine($"Genero del avatar: {avatar.Gender}");
+                                        WriteLine($"Joyas de vida: {collectionBox.GetTotalLifeJewelry()}");
+                                        WriteLine($"Cristales recolectados: {collectionBox.GetTotalCrystals()}");
+                                        WriteLine($"Puntos: {collectionBox.GetTotalPoints()}");
+                                        WriteLine($"Ubicación Actual: {avatar.GetCurrentCoordinates()}");
+                                        WriteLine("-------------------------------------------------------------");
+                                        WriteLine("Presiona cualquier tecla para continuar");
+                                        gameCompleted = true;
+                                    }
+                                    else
+                                    {
+                                        collectionBox.TotalPoints += -10;
+                                        avatar.Level += -1;
+                                        InitGameOne(avatar, collectionBox);
+                                    }
                                 }
                               break;
                             case "O":
@@ -189,10 +216,12 @@ namespace ClassLibrary
                                     if (remainingCrystals.Count == 0)
                                     {
                                         avatar.Level += 1;
+                                        collectionBox.TotalPoints += 50;
                                         InitGameOne(avatar, collectionBox);
                                     }
                                     else
                                     {
+                                        collectionBox.TotalPoints -= 5;
                                         WriteLine("Recolecta todos los cristales para poder ingresar al portal");
                                         updateAvatarCoordinate(avatar, matriz, point.Item1, point.Item2);
                                         ReadKey(true);
@@ -256,6 +285,7 @@ namespace ClassLibrary
                     }
                     else
                     {
+                        collectionBox.TotalPoints -= 20;
                         avatar.Level -= 1;
                         InitGameOne(avatar, collectionBox);
                     }
