@@ -179,39 +179,60 @@ namespace ClassLibrary
                               }
                               break;
                             case "O":
-                                var remainingCrystals = findInMatriz(matriz, "#");
-                                if (remainingCrystals.Count == 0)
+                                if (avatar.Level == 1)
                                 {
-                                    if(avatar.Level == 5)
-                                    {
-                                        WriteLine("Felicitaciones, has logrado completar el juego");
-                                        WriteLine("Si quieres jugar de nuevo ingresa 1 si no presiona cualquier tecla");
-                                        string salir = ReadLine();
-                                        if (salir.Equals("1"))
-                                        {
-                                            avatar.Level = 1;
-                                            InitGameOne(avatar, collectionBox);
-                                        }
-                                        else
-                                        {
-                                            Environment.Exit(0);
-                                        }
-                                    }
-                                    else
+                                    var remainingCrystals = findInMatriz(matriz, "#");
+                                    if (remainingCrystals.Count == 0)
                                     {
                                         avatar.Level += 1;
                                         InitGameOne(avatar, collectionBox);
                                     }
+                                    else
+                                    {
+                                        WriteLine("Recolecta todos los cristales para poder ingresar al portal");
+                                        updateAvatarCoordinate(avatar, matriz, point.Item1, point.Item2);
+                                        ReadKey(true);
+                                    }
                                 }
                                 else
                                 {
-                                    var portalPosition = findInMatriz(matriz, "O");
-                                    foreach (var portal in portalPosition)
+                                    var remainingCrystals = findInMatriz(matriz, "#");
+                                    if (remainingCrystals.Count == 0)
                                     {
-                                        matriz[portal.Item1, portal.Item2] = null;
+                                        if (avatar.Level == 5)
+                                        {
+                                            collectionBox.TotalPoints += 1000;
+                                            WriteLine("Felicitaciones, has logrado completar el juego");
+                                            WriteLine("Si quieres jugar de nuevo ingresa 1 si no presiona cualquier tecla");
+                                            string salir = ReadLine();
+                                            if (salir.Equals("1"))
+                                            {
+                                                avatar.Level = 1;
+                                                InitGameOne(avatar, collectionBox);
+                                            }
+                                            else
+                                            {
+                                                Environment.Exit(0);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            avatar.Level += 1;
+                                            collectionBox.TotalPoints += 50;
+                                            InitGameOne(avatar, collectionBox);
+                                        }
                                     }
-                                    updateAvatarCoordinate(avatar, matriz, fila, columna);
-                                    InsertObjectInMatriz(matriz, "O", 1);
+                                    else
+                                    {
+                                        var portalPosition = findInMatriz(matriz, "O");
+                                        foreach (var portal in portalPosition)
+                                        {
+                                            matriz[portal.Item1, portal.Item2] = null;
+                                        }
+                                        collectionBox.TotalPoints -= 5;
+                                        updateAvatarCoordinate(avatar, matriz, fila, columna);
+                                        InsertObjectInMatriz(matriz, "O", 1);
+                                    }
                                 }
                                 break;
                         }
