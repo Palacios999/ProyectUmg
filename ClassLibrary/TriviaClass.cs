@@ -40,23 +40,33 @@ namespace ClassLibrary
                             WriteLine("2) 144");
                             WriteLine("3) 154");
                             WriteLine("4) 164");
-                            int optionSelect = int.Parse(ReadLine());
-                            if (optionSelect > 4 || optionSelect < 1)
+                            if (int.TryParse(ReadLine(), out int optionSelect)) {
+                                if (optionSelect > 4 || optionSelect < 1)
+                                {
+                                    WriteLine(@"Selecciona una opción valida (1-4)");
+                                    WriteLine("-------------------------------------------------------------");
+                                } else
+                                {
+                                    switch (optionSelect)
+                                    {
+                                        case 1:
+                                            return false;
+                                        case 2:
+                                            return true;
+                                        case 3:
+                                            return false;
+                                        case 4:
+                                            return false;
+                                    }
+                                }
+                            }
+                            else
                             {
-                                WriteLine(@"Selecciona una opción valida (1-4)");
+                                WriteLine(@"Selecciona una opción válida (1-4)");
                                 WriteLine("-------------------------------------------------------------");
                             }
-                            switch(optionSelect)
-                            {
-                                case 1:
-                                    return false;
-                                case 2:
-                                    return true;
-                                case 3:
-                                    return false;
-                                case 4:
-                                    return false;
-                            }
+
+
                         }
                     case 2:
                         while (true)
@@ -66,22 +76,32 @@ namespace ClassLibrary
                             WriteLine("2) 1997");
                             WriteLine("3) 1999");
                             WriteLine("4) 2001");
-                            int optionSelect = int.Parse(ReadLine());
-                            if (optionSelect > 4 || optionSelect < 1)
+                            if (int.TryParse(ReadLine(), out int optionSelect))
                             {
-                                WriteLine(@"Selecciona una opción valida (1-4)");
-                                WriteLine("-------------------------------------------------------------");
+                                if (optionSelect > 4 || optionSelect < 1)
+                                {
+                                    WriteLine(@"Selecciona una opción valida (1-4)");
+                                    WriteLine("-------------------------------------------------------------");
+                                }
+                                else
+                                {
+                                    switch (optionSelect)
+                                    {
+                                        case 1:
+                                            return false;
+                                        case 2:
+                                            return true;
+                                        case 3:
+                                            return false;
+                                        case 4:
+                                            return false;
+                                    }
+                                }
                             }
-                            switch (optionSelect)
+                            else
                             {
-                                case 1:
-                                    return false;
-                                case 2:
-                                    return true;
-                                case 3:
-                                    return false;
-                                case 4:
-                                    return false;
+                                WriteLine(@"Selecciona una opción válida (1-4)");
+                                WriteLine("-------------------------------------------------------------");
                             }
                         }
                     case 3:
@@ -92,22 +112,32 @@ namespace ClassLibrary
                             WriteLine("2) 12");
                             WriteLine("3) 14");
                             WriteLine("4) 16");
-                            int optionSelect = int.Parse(ReadLine());
-                            if (optionSelect > 4 || optionSelect < 1)
+                            if (int.TryParse(ReadLine(), out int optionSelect))
                             {
-                                WriteLine(@"Selecciona una opción valida (1-4)");
-                                WriteLine("-------------------------------------------------------------");
+                                if (optionSelect > 4 || optionSelect < 1)
+                                {
+                                    WriteLine(@"Selecciona una opción valida (1-4)");
+                                    WriteLine("-------------------------------------------------------------");
+                                }
+                                else
+                                {
+                                    switch (optionSelect)
+                                    {
+                                        case 1:
+                                            return true;
+                                        case 2:
+                                            return false;
+                                        case 3:
+                                            return false;
+                                        case 4:
+                                            return false;
+                                    }
+                                }
                             }
-                            switch (optionSelect)
+                            else
                             {
-                                case 1:
-                                    return true;
-                                case 2:
-                                    return false;
-                                case 3:
-                                    return false;
-                                case 4:
-                                    return false;
+                                WriteLine(@"Selecciona una opción válida (1-4)");
+                                WriteLine("-------------------------------------------------------------");
                             }
                         }
                     case 4:
@@ -118,22 +148,32 @@ namespace ClassLibrary
                             WriteLine("2) 1969");
                             WriteLine("3) 1972");
                             WriteLine("4) 1975");
-                            int optionSelect = int.Parse(ReadLine());
-                            if (optionSelect > 4 || optionSelect < 1)
+                            if (int.TryParse(ReadLine(), out int optionSelect))
                             {
-                                WriteLine(@"Selecciona una opción valida (1-4)");
-                                WriteLine("-------------------------------------------------------------");
+                                if (optionSelect > 4 || optionSelect < 1)
+                                {
+                                    WriteLine(@"Selecciona una opción valida (1-4)");
+                                    WriteLine("-------------------------------------------------------------");
+                                }
+                                else
+                                {
+                                    switch (optionSelect)
+                                    {
+                                        case 1:
+                                            return false;
+                                        case 2:
+                                            return false;
+                                        case 3:
+                                            return true;
+                                        case 4:
+                                            return false;
+                                    }
+                                }
                             }
-                            switch (optionSelect)
+                            else
                             {
-                                case 1:
-                                    return false;
-                                case 2:
-                                    return false;
-                                case 3:
-                                    return true;
-                                case 4:
-                                    return false;
+                                WriteLine(@"Selecciona una opción válida (1-4)");
+                                WriteLine("-------------------------------------------------------------");
                             }
                         }
                     case 5:
@@ -144,22 +184,32 @@ namespace ClassLibrary
                             WriteLine("2) 3.14");
                             WriteLine("3) 3.16");
                             WriteLine("4) 3.18");
-                            int optionSelect = int.Parse(ReadLine());
-                            if (optionSelect > 4 || optionSelect < 1)
+                            if (int.TryParse(ReadLine(), out int optionSelect))
                             {
-                                WriteLine(@"Selecciona una opción valida (1-4)");
-                                WriteLine("-------------------------------------------------------------");
+                                if (optionSelect > 4 || optionSelect < 1)
+                                {
+                                    WriteLine(@"Selecciona una opción valida (1-4)");
+                                    WriteLine("-------------------------------------------------------------");
+                                }
+                                else
+                                {
+                                    switch (optionSelect)
+                                    {
+                                        case 1:
+                                            return false;
+                                        case 2:
+                                            return true;
+                                        case 3:
+                                            return false;
+                                        case 4:
+                                            return false;
+                                    }
+                                }
                             }
-                            switch (optionSelect)
+                            else
                             {
-                                case 1:
-                                    return false;
-                                case 2:
-                                    return true;
-                                case 3:
-                                    return false;
-                                case 4:
-                                    return false;
+                                WriteLine(@"Selecciona una opción válida (1-4)");
+                                WriteLine("-------------------------------------------------------------");
                             }
                         }
                     case 6:
@@ -170,22 +220,32 @@ namespace ClassLibrary
                             WriteLine(@"2) Educación con visión");
                             WriteLine(@"3) Saber para servir");
                             WriteLine(@"4) Formación integral para el futuro");
-                            int optionSelect = int.Parse(ReadLine());
-                            if (optionSelect > 4 || optionSelect < 1)
+                            if (int.TryParse(ReadLine(), out int optionSelect))
                             {
-                                WriteLine(@"Selecciona una opción valida (1-4)");
-                                WriteLine("-------------------------------------------------------------");
+                                if (optionSelect > 4 || optionSelect < 1)
+                                {
+                                    WriteLine(@"Selecciona una opción valida (1-4)");
+                                    WriteLine("-------------------------------------------------------------");
+                                }
+                                else
+                                {
+                                    switch (optionSelect)
+                                    {
+                                        case 1:
+                                            return false;
+                                        case 2:
+                                            return false;
+                                        case 3:
+                                            return true;
+                                        case 4:
+                                            return false;
+                                    }
+                                }
                             }
-                            switch (optionSelect)
+                            else
                             {
-                                case 1:
-                                    return false;
-                                case 2:
-                                    return false;
-                                case 3:
-                                    return true;
-                                case 4:
-                                    return false;
+                                WriteLine(@"Selecciona una opción válida (1-4)");
+                                WriteLine("-------------------------------------------------------------");
                             }
                         }
                     default:
