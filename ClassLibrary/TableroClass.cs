@@ -165,21 +165,23 @@ namespace ClassLibrary
                                 updateAvatarCoordinate(avatar, matriz, fila, columna);
                                 break;
                             case "¥":
-                              var triviaResult = Trivia.ShowTrivia(avatar, collectionBox);
-                              if(triviaResult == true)
-                              {
+                                var triviaResult = Trivia.ShowTrivia(avatar, collectionBox);
+                                if(triviaResult == true)
+                                {
 
-                              } else
-                              {
+                                } else
+                                {
 
-                              }
-                              break;
+                                }
+                                updateAvatarCoordinate(avatar, matriz, fila, columna);
+                                break;
                             case "O":
                                 var remainingCrystals = findInMatriz(matriz, "#");
                                 if (remainingCrystals.Count == 0)
                                 {
                                     if(avatar.Level == 5)
                                     {
+                                        collectionBox.TotalPoints += 1000;
                                         WriteLine("Felicitaciones, has logrado completar el juego");
                                         WriteLine("Si quieres jugar de nuevo ingresa 1 si no presiona cualquier tecla");
                                         string salir = ReadLine();
@@ -196,6 +198,7 @@ namespace ClassLibrary
                                     else
                                     {
                                         avatar.Level += 1;
+                                        collectionBox.TotalPoints += 50;
                                         InitGameOne(avatar, collectionBox);
                                     }
                                 }
@@ -206,6 +209,7 @@ namespace ClassLibrary
                                     {
                                         matriz[portal.Item1, portal.Item2] = null;
                                     }
+                                    collectionBox.TotalPoints -= 5;
                                     updateAvatarCoordinate(avatar, matriz, fila, columna);
                                     InsertObjectInMatriz(matriz, "O", 1);
                                 }
