@@ -61,7 +61,7 @@ namespace ClassLibrary
                 InsertObjectInMatrizNotAdyacent(matriz, "#", crystalQty);
                 InsertObjectInMatriz(matriz, "&", players);
                 InsertObjectInMatriz(matriz, "O", portals);
-                InsertObjectInMatriz(matriz, "¥", trollsQty);
+                InsertObjectInMatriz(matriz, " ", trollsQty);
                 updatePositionAvatarGenerate(matriz, avatar);
             }
             
@@ -164,51 +164,72 @@ namespace ClassLibrary
                                 collectionBox.TotalPoints += 15;
                                 updateAvatarCoordinate(avatar, matriz, fila, columna);
                                 break;
-                            case "¥":
-                              var triviaResult = Trivia.ShowTrivia(avatar, collectionBox);
-                              if(triviaResult == true)
-                              {
+                            case " ":
+                                var triviaResult = Trivia.ShowTrivia(avatar, collectionBox);
+                                if(triviaResult == true)
+                                {
+                                    collectionBox.TotalLifeJewelry += 1;
+                                    matriz[fila, columna] = null;
+                                    updateAvatarCoordinate(avatar, matriz, fila, columna);
+                                    InsertObjectInMatriz(matriz, " ", 1);
 
-                              } else
-                              {
-
-                              }
+                                } else
+                                {
+                                    collectionBox.TotalLifeJewelry += -1;
+                                    avatar.Level += -1;
+                                    InitGameOne(avatar, collectionBox);
+                                }
                               break;
                             case "O":
-                                var remainingCrystals = findInMatriz(matriz, "#");
-                                if (remainingCrystals.Count == 0)
-                                {
-                                    if(avatar.Level == 5)
+                                if (avatar.Level == 1) {
+                                    var remainingCrystals = findInMatriz(matriz, "#");
+                                    if (remainingCrystals.Count == 0)
                                     {
-                                        WriteLine("Felicitaciones, has logrado completar el juego");
-                                        WriteLine("Si quieres jugar de nuevo ingresa 1 si no presiona cualquier tecla");
-                                        string salir = ReadLine();
-                                        if (salir.Equals("1"))
+                                        avatar.Level += 1;
+                                        InitGameOne(avatar, collectionBox);
+                                    } else
+                                    {
+                                        WriteLine("Recolecta todos los cristales para poder ingresar al portal");
+                                        updateAvatarCoordinate(avatar, matriz, point.Item1, point.Item2);
+                                        ReadKey(true);
+                                    }
+                                } else {
+                                    var remainingCrystals = findInMatriz(matriz, "#");
+                                    if (remainingCrystals.Count == 0)
+                                    {
+                                        if (avatar.Level == 5)
                                         {
-                                            avatar.Level = 1;
-                                            InitGameOne(avatar, collectionBox);
+                                            WriteLine("Felicitaciones, has logrado completar el juego");
+                                            WriteLine("Si quieres jugar de nuevo ingresa 1 si no presiona cualquier tecla");
+                                            string salir = ReadLine();
+                                            if (salir.Equals("1"))
+                                            {
+                                                avatar.Level = 1;
+                                                InitGameOne(avatar, collectionBox);
+                                            }
+                                            else
+                                            {
+                                                Environment.Exit(0);
+                                            }
                                         }
                                         else
                                         {
-                                            Environment.Exit(0);
+                                            avatar.Level += 1;
+                                            InitGameOne(avatar, collectionBox);
                                         }
                                     }
                                     else
                                     {
-                                        avatar.Level += 1;
-                                        InitGameOne(avatar, collectionBox);
+                                        var portalPosition = findInMatriz(matriz, "O");
+                                        foreach (var portal in portalPosition)
+                                        {
+                                            matriz[portal.Item1, portal.Item2] = null;
+                                        }
+                                        updateAvatarCoordinate(avatar, matriz, fila, columna);
+                                        InsertObjectInMatriz(matriz, "O", 1);
                                     }
                                 }
-                                else
-                                {
-                                    var portalPosition = findInMatriz(matriz, "O");
-                                    foreach (var portal in portalPosition)
-                                    {
-                                        matriz[portal.Item1, portal.Item2] = null;
-                                    }
-                                    updateAvatarCoordinate(avatar, matriz, fila, columna);
-                                    InsertObjectInMatriz(matriz, "O", 1);
-                                }
+                                
                                 break;
                         }
                     }
