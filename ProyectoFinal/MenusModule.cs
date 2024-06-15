@@ -13,9 +13,12 @@ namespace ProyectoFinal
     {
         public static int FirstMenu()
         {
+            // Se limpia la consola para tener un área limpia.
             Clear();
+            // Se agrega un ciclo while(true) para que se repita el menu hazta que se retorne un valor valido.
             while (true)
             {
+                // Se maneja try para el control de excepciones no controladas.
                 try
                 {
                     WriteLine("Bienvenido a CRYSTAL COLLECTOR");
@@ -24,37 +27,44 @@ namespace ProyectoFinal
                     WriteLine("2. Instrucciones");
                     WriteLine("3. Informacion sobre CRYSTAL COLLECTOR");
                     WriteLine("4. Salir del juego");
+                    // Se lee la información obtenida por el teclado
                     var option = int.Parse(ReadLine());
+                    // Se valida que este en el rango de opciones a escoger, de no ser asi muestra un mensaje personalizado
                     if (option <= 0 || option > 4)
                     {
                         WriteLine("-------------------------------------------------------------");
                         WriteLine("Opción invalida, vuelve a seleccionar una opción");
                         WriteLine("-------------------------------------------------------------");
                     }
+                    // si es una opción valida se retorna el valor del mismo.
                     else
                     {
                         return option;
                     }
-                }
+                } // Se maneja la excepcion si hay un dato nulo
                 catch (ArgumentNullException ex)
                 {
                     WriteLine("-------------------------------------------------------------");
                     WriteLine(ex.Message);
                     WriteLine("-------------------------------------------------------------");
+                    // Se retorna un valor no valido en el switch en donde se mandara al menu para que vuelva a repetir el ciclo.
                     return 0;
-                }
+                } // Se maneja la excepcion para errores generales
                 catch (Exception ex)
                 {
                     WriteLine("-------------------------------------------------------------");
                     WriteLine(ex.Message);
                     WriteLine("-------------------------------------------------------------");
+                    // Se retorna un valor no valido en el switch en donde se mandara al menu para que vuelva a repetir el ciclo.
                     return 0;
                 }
             }
         }
 
+        // Función para imprimir datos en consola
         public static void PrintInstructions()
         {
+            // Se limpia la consola para tener un área limpia.
             Clear();
             WriteLine("////////////////////////////////////////////////////////////////////////////////////////////");
             WriteLine("-------------------------------------- Instrucciones ---------------------------------------");
@@ -72,52 +82,70 @@ namespace ProyectoFinal
             WriteLine("Espero disfrutes el juego");
             WriteLine("-------------------------------------------------------------");
             WriteLine("Presiona cualquier tecla para regresar al menu");
+            // Como la ejecución es instantanea, se necesita de un elemento el cual espere un evento,
+            // para mantener el mensaje, al seleccionar cualquier boton se terminara la ejecución de dicha función
             ReadKey(true);
         }
 
         public static void ViewInfoCristal()
         {
+            // Se limpia la consola para tener un área limpia.
             Clear();
             WriteLine("Información sobre CRYSTAL COLLECTOR");
             WriteLine("-------------------------------------------------------------");
             WriteLine("Juego desarrollado por Jonatan Palacios, version de .NET v8.0");
             WriteLine("-------------------------------------------------------------");
             WriteLine("Presiona cualquier tecla para regresar al menu");
+            // Como la ejecución es instantanea, se necesita de un elemento el cual espere un evento,
+            // para mantener el mensaje, al seleccionar cualquier boton se terminara la ejecución de dicha función
             ReadKey(true);
         }
 
         public static void InitGame()
         {
+            // Se limpia la consola para tener un área limpia.
             Clear();
+            // Se agrega try catch para el manejo de excepciones
             try
             {
+                // Declaración de variables
                 int gender;
                 string nameAvatar;
                 WriteLine("Bienvenido a Crystal Collector");
                 WriteLine("Crea tu avatar");
                 WriteLine("Escribe el nombre de tu avatar");
+                // agrega datos de lo escrito en consola a la variable
                 nameAvatar = ReadLine();
+
+                // Condicional que detecta si no se agrego un valor a la variable nameAvatar
                 if (nameAvatar == "") {
                     WriteLine("Se detecto que no ah agregado un nombre, se le asignara uno por defecto");
                 }
                 
+                // Ciclo while (true)
                 while (true)
                 {
                     WriteLine("Escoge el genero de tu avatar");
                     WriteLine("1. Masculino");
                     WriteLine("2. Femenino");
+
+                    // variable a la cual se le va a agregar el valor que se obtenga por consola
                     gender = int.Parse(ReadLine());
                     if (gender <= 0 || gender > 2)
                     {
                         WriteLine("Genero invalido");
                     } else
                     {
+                        // finaliza el ciclo para volver a iniciar
                         break;
                     }
                 }
 
+                // Inicialización de constructores de clase
                 Avatar avatarPrincipal = null;
                 CollectionBox collectionBox = null;
+
+                // switch para saber que genero se escogio, dependiendo es esto se creara el vatar con los datos predeterminados.
                 switch(gender)
                 {
                     case 1:
@@ -133,21 +161,29 @@ namespace ProyectoFinal
                 WriteLine($"El nombre del avatar es: {avatarPrincipal.Name} y su genero: {avatarPrincipal.Gender}");
                 WriteLine("Presiona cualquier tecla para continuar");
                 WriteLine("-------------------------------------------------------------");
+                // Como la ejecución es instantanea, se necesita de un elemento el cual espere un evento,
+                // para mantener el mensaje, al seleccionar cualquier boton se terminara la ejecución de dicha función
                 ReadKey(true);
+
                 subMenuInit(avatarPrincipal, collectionBox);
-            } catch (ArgumentNullException ex) {
+            } // Excepción de campo nulo
+            catch (ArgumentNullException ex) {
                 WriteLine(ex.Message);
-            } catch (Exception ex) { 
+            } // Excepción generales
+            catch (Exception ex) { 
                 WriteLine(ex.Message);
             }
         }
 
         public static void subMenuInit(Avatar avatarPrincipal, CollectionBox collectionBox)
         {
+            // Ciclo while (true)
             while (true)
             {
+                // Se agrega try catch para el manejo de excepciones
                 try
                 {
+                    // Se limpia la consola para tener un área limpia.
                     Clear();
                     WriteLine("-------------------------------------------------------------");
                     WriteLine("1. Comandos");
@@ -155,16 +191,21 @@ namespace ProyectoFinal
                     WriteLine("3. Estado de avatar");
                     WriteLine("4. Terminar partida");
                     WriteLine("-------------------------------------------------------------");
+                    // Leer dato en consola 
                     var OpcionSelect = int.Parse(ReadLine());
 
+                    // Condición de opciones
                     if(OpcionSelect <= 0 || OpcionSelect > 4) {
                         WriteLine("-------------------------------------------------------------");
                         WriteLine("Opcion no disponible");
                         WriteLine("Presiona cualquier tecla para continuar");
                         WriteLine("-------------------------------------------------------------");
+                        // Como la ejecución es instantanea, se necesita de un elemento el cual espere un evento,
+                        // para mantener el mensaje, al seleccionar cualquier boton se terminara la ejecución de dicha función
                         ReadKey(true);
                     }
 
+                    // switch para identificar que función iniciar
                     switch (OpcionSelect)
                     {
                         case 1:
@@ -178,20 +219,28 @@ namespace ProyectoFinal
                             StateAvatar(avatarPrincipal, collectionBox);
                             break;
                         case 4:
-                            Environment.Exit(0);
-                            break;
+                            avatarPrincipal.ResetDataAvatar();
+                            collectionBox.ResetCollectionBox();
+                            return;
                     }
-                } catch (ArgumentNullException ex)
+                } // Excepcion cuando se recibe un argumento nulo
+                catch (ArgumentNullException ex)
                 {
                     WriteLine(ex.Message);
                     WriteLine("Presiona cualquier tecla para continuar");
                     WriteLine("-------------------------------------------------------------");
+                    // Como la ejecución es instantanea, se necesita de un elemento el cual espere un evento,
+                    // para mantener el mensaje, al seleccionar cualquier boton se terminara la ejecución de dicha función
                     ReadKey(true);
-                } catch (Exception ex)
+
+                } // Excepciones generales
+                catch (Exception ex)
                 {
                     WriteLine(ex.Message);
                     WriteLine("Presiona cualquier tecla para continuar");
                     WriteLine("-------------------------------------------------------------");
+                    // Como la ejecución es instantanea, se necesita de un elemento el cual espere un evento,
+                    // para mantener el mensaje, al seleccionar cualquier boton se terminara la ejecución de dicha función
                     ReadKey(true);
                 }
             }
@@ -200,6 +249,7 @@ namespace ProyectoFinal
 
         public static void Commands()
         {
+            // Se limpia la consola para tener un área limpia.
             Clear();
             WriteLine("-------------------------------------------------------------");
             WriteLine("Al iniciar el juego tienes que usar los siguientes comandos:");
@@ -211,12 +261,16 @@ namespace ProyectoFinal
             WriteLine("W - Para moverte hacia arriba");
             WriteLine("-------------------------------------------------------------");
             WriteLine("Presiona cualquier tecla para continuar");
+            // Como la ejecución es instantanea, se necesita de un elemento el cual espere un evento,
+            // para mantener el mensaje, al seleccionar cualquier boton se terminara la ejecución de dicha función
             ReadKey(true);
         }
 
         public static void StateAvatar(Avatar avatarPrincipal, CollectionBox collectionBox)
         {
+            // Se limpia la consola para tener un área limpia.
             Clear();
+            // condicional si el avatar aun no se a creado.
             if (avatarPrincipal != null)
             {
                 WriteLine("-------------------------------------------------------------");
@@ -228,6 +282,8 @@ namespace ProyectoFinal
                 WriteLine($"Ubicación Actual: {avatarPrincipal.GetCurrentCoordinates()}");
                 WriteLine("-------------------------------------------------------------");
                 WriteLine("Presiona cualquier tecla para continuar");
+                // Como la ejecución es instantanea, se necesita de un elemento el cual espere un evento,
+                // para mantener el mensaje, al seleccionar cualquier boton se terminara la ejecución de dicha función
                 ReadKey(true);
             }
         }

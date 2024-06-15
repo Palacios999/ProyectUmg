@@ -10,6 +10,7 @@ namespace ClassLibrary
         private int CurrentCoordinateX { get; set; }
         private int CurrentCoordinateY { get; set; }
 
+        // Constructor del Avatar.
         public Avatar(string name, string gender) {
             Name = name;
             Gender = gender;
@@ -18,17 +19,20 @@ namespace ClassLibrary
             CurrentCoordinateY = 0;
         }
 
+        // Obtiene la coordenada del avatar
         public (int,int) GetCurrentCoordinates()
         {
             return (this.CurrentCoordinateX, this.CurrentCoordinateY);
         }
 
+        // Actualizar coordenada del avatar
         public void UpdateCoordinate(int coordinateX, int coordinateY)
         {
             this.CurrentCoordinateX = coordinateX;
             this.CurrentCoordinateY = coordinateY;
         }
 
+        // Limpiar datos del avatar
         public void ResetDataAvatar()
         {
             this.Level = 1;

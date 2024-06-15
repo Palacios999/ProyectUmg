@@ -9,6 +9,8 @@ namespace ClassLibrary
 {
     public static class Trivia
     {
+        // Función principal de trivia, esta retorna un booleano, dependiendo de la respuesta de la pregunta que se responda en la función anidada
+        // Ademas la función genera un numero aleatoreo, esto para escoger una pregunta al azar
         public static Boolean ShowTrivia(Avatar avatar, CollectionBox collectionBox)
         {
             WriteLine("");
@@ -25,6 +27,7 @@ namespace ClassLibrary
             return resultTrivia;
         }
 
+        // Muestra la trivia segun el numero random de la función principal
         public static Boolean ShowTriviaNumber(int idTrivia)
         {
             try
@@ -39,6 +42,7 @@ namespace ClassLibrary
                             WriteLine("2) 144");
                             WriteLine("3) 154");
                             WriteLine("4) 164");
+                            // parsea el valor para que sea un entero, de no ser asi muestra lo que esta en else
                             if (int.TryParse(ReadLine(), out int optionSelect)) {
                                 if (optionSelect > 4 || optionSelect < 1)
                                 {
@@ -75,6 +79,7 @@ namespace ClassLibrary
                             WriteLine("2) 1997");
                             WriteLine("3) 1999");
                             WriteLine("4) 2001");
+                            // parsea el valor para que sea un entero, de no ser asi muestra lo que esta en else
                             if (int.TryParse(ReadLine(), out int optionSelect))
                             {
                                 if (optionSelect > 4 || optionSelect < 1)
@@ -111,6 +116,7 @@ namespace ClassLibrary
                             WriteLine("2) 12");
                             WriteLine("3) 14");
                             WriteLine("4) 16");
+                            // parsea el valor para que sea un entero, de no ser asi muestra lo que esta en else
                             if (int.TryParse(ReadLine(), out int optionSelect))
                             {
                                 if (optionSelect > 4 || optionSelect < 1)
@@ -147,6 +153,7 @@ namespace ClassLibrary
                             WriteLine("2) 1969");
                             WriteLine("3) 1972");
                             WriteLine("4) 1975");
+                            // parsea el valor para que sea un entero, de no ser asi muestra lo que esta en else
                             if (int.TryParse(ReadLine(), out int optionSelect))
                             {
                                 if (optionSelect > 4 || optionSelect < 1)
@@ -183,6 +190,7 @@ namespace ClassLibrary
                             WriteLine("2) 3.14");
                             WriteLine("3) 3.16");
                             WriteLine("4) 3.18");
+                            // parsea el valor para que sea un entero, de no ser asi muestra lo que esta en else
                             if (int.TryParse(ReadLine(), out int optionSelect))
                             {
                                 if (optionSelect > 4 || optionSelect < 1)
@@ -219,6 +227,7 @@ namespace ClassLibrary
                             WriteLine(@"2) Educación con visión");
                             WriteLine(@"3) Saber para servir");
                             WriteLine(@"4) Formación integral para el futuro");
+                            // parsea el valor para que sea un entero, de no ser asi muestra lo que esta en else
                             if (int.TryParse(ReadLine(), out int optionSelect))
                             {
                                 if (optionSelect > 4 || optionSelect < 1)
